@@ -1,0 +1,22 @@
+.app-heading {
+  font-weight: 700;
+  font-size: 45px;
+  margin: 10px;
+  margin-bottom: 20px;
+  color:blue;
+}
+
+input{
+    width: 100%;
+}
+
+.items-container{
+    text-align: left;
+}
+.my-button{
+
+    min-width: 80px;
+}
+.my-row{
+    margin: 10px 5px;
+}
