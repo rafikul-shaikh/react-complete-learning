@@ -3,17 +3,21 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
+  //let foodItems = [];
+  let foodItems = ["Ruti", "Dal", "Green vegetable", "Fruit", "Salad", "Milk"];
+
   return (
-    <React.Fragment>
+    <>
       <h1>Healthy food</h1>
-      <ul class="list-group">
-        <li class="list-group-item"> Dal</li>
-        <li class="list-group-item">Green vegetable</li>
-        <li class="list-group-item">Fruit</li>
-        <li class="list-group-item">Salad</li>
-        <li class="list-group-item">Milk</li>
+      {foodItems.length === 0 && <h3>Where is My Food</h3>}
+      <ul className="list-group">
+        {foodItems.map((item) => (
+          <li key={item} className="list-group-item">
+            {item}
+          </li>
+        ))}
       </ul>
-    </React.Fragment>
+    </>
   );
 }
 
