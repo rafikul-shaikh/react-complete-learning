@@ -1,4 +1,4 @@
-import Item from "../Item";
+import Item from "./Item";
 
 const FoodItems = ({ items }) => {
   //let foodItems = [];
