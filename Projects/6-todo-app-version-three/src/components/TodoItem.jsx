@@ -1,4 +1,6 @@
-function TodoItem({ todoName, todoDate }) {
+import { MdDeleteOutline } from "react-icons/md";
+
+function TodoItem({ todoName, todoDate, onDeleteClick }) {
   // let todoName = "Buy Milk";
   // let todoDate = "03/11/25";
   return (
@@ -7,8 +9,12 @@ function TodoItem({ todoName, todoDate }) {
         <div className="col-6">{todoName}</div>
         <div className="col-4">{todoDate} </div>
         <div className="col-2">
-          <button type="button" className="btn btn-danger my-button">
-            delete
+          <button
+            type="button"
+            className="btn btn-danger my-button"
+            onClick={() => onDeleteClick(todoName)}
+          >
+            <MdDeleteOutline />
           </button>
         </div>
       </div>
