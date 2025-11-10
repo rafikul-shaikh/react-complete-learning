@@ -4,8 +4,8 @@ import { TodoItemsContext } from "../store/todo-items-store";
 
 function AddTodo() {
   const { addNewItem } = useContext(TodoItemsContext);
-  const [todoName, setTodoName] = useState();
-  const [dueDate, setDueDate] = useState();
+  const [todoName, setTodoName] = useState("");
+  const [dueDate, setDueDate] = useState("");
 
   const handleNameChange = (event) => {
     setTodoName(event.target.value);
@@ -23,7 +23,7 @@ function AddTodo() {
 
   return (
     <div className="container text-center">
-      <div className="row kg-row">
+      <div className="row my-row">
         <div className="col-6">
           <input
             type="text"
@@ -38,7 +38,7 @@ function AddTodo() {
         <div className="col-2">
           <button
             type="button"
-            className="btn btn-success kg-button"
+            className="btn btn-success my-button"
             onClick={handleAddButtonClicked}
           >
             Add
