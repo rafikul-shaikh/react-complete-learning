@@ -2,6 +2,7 @@ import { createContext, useReducer } from "react";
 
 export const PostList = createContext({
   postList: [],
+  addInitialPosts: () => {},
   addPost: () => {},
   deletePost: () => {},
 });
@@ -12,6 +13,8 @@ const postListReducer = (currPostList, action) => {
     newPostList = currPostList.filter(
       (post) => post.id !== action.payload.postId
     );
+  } else if (action.type === "ADD_INITIAL_POSTS") {
+    newPostList = action.payload.posts;
   } else if (action.type === "ADD_POST") {
     newPostList = [action.payload, ...currPostList];
   }
@@ -19,10 +22,8 @@ const postListReducer = (currPostList, action) => {
 };
 
 const PostListProvider = ({ children }) => {
-  const [postList, dispatchPostList] = useReducer(
-    postListReducer,
-    DEFAULT_POST_LIST
-  );
+  const [postList, dispatchPostList] = useReducer(postListReducer, []);
+
   const addPost = (userId, postTitle, postBody, reactions, tags) => {
     dispatchPostList({
       type: "ADD_POST",
@@ -35,8 +36,15 @@ const PostListProvider = ({ children }) => {
         tags: tags,
       },
     });
+  };
 
-    //console.log(`${userId} ${postTitle} ${postBody} ${reactions} ${tags}`);
+  const addInitialPosts = (posts) => {
+    dispatchPostList({
+      type: "ADD_INITIAL_POSTS",
+      payload: {
+        posts,
+      },
+    });
   };
   const deletePost = (postId) => {
     dispatchPostList({
@@ -49,28 +57,11 @@ const PostListProvider = ({ children }) => {
     //console.log(`delete post called for : ${postId}`);
   };
   return (
-    <PostList.Provider value={{ postList, addPost, deletePost }}>
+    <PostList.Provider
+      value={{ postList, addPost, addInitialPosts, deletePost }}
+    >
       {children}
     </PostList.Provider>
   );
 };
-
-const DEFAULT_POST_LIST = [
-  {
-    id: "1",
-    title: "Mern stack learning ",
-    body: " Hi, I am Rafikul , i am very excited to learn new things , Currently i am learning react ",
-    reactions: 2,
-    userId: "user-9",
-    tags: ["Skill", "Kolkata", "Enjoying"],
-  },
-  {
-    id: "2",
-    title: "AI ka Market hai bhai ",
-    body: " Ai to sikhna he padhega Productivity badhane ke liye ",
-    reactions: 15,
-    userId: "user-12",
-    tags: ["Graduating", "Right"],
-  },
-];
 export default PostListProvider;

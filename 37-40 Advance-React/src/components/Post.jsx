@@ -24,7 +24,12 @@ const Post = ({ post }) => {
         ))}
 
         <div className="alert alert-success reactions" role="alert">
-          this post has been reacted by {post.reactions} people
+          {/* this post has been reacted by {post.reactions} people */}
+          this post has been reacted by{" "}
+          {typeof post.reactions === "object"
+            ? post.reactions.likes
+            : post.reactions}{" "}
+          people
         </div>
       </div>
     </div>
