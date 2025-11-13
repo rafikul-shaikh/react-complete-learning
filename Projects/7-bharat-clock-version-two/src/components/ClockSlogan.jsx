@@ -1,8 +1,6 @@
 let ClockSlogan = () => {
   return (
-    <p className="lead">
-      This is the clock that shows the time in Bharat in all time{" "}
-    </p>
+    <p className="lead">This clock shows the time in Bharat in all time </p>
   );
 };
 
