@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
 
 const DisplayCounter = () => {
-  const counter = useSelector((store) => store.counter);
+  const { counterVal } = useSelector((store) => store.counter);
 
   return (
-    <p className="lead mb-4">This is the counter current value {counter}</p>
+    <p className="lead mb-4">This is the counter current value {counterVal}</p>
   );
 };
 export default DisplayCounter;
